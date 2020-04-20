@@ -5,15 +5,12 @@ import NProgress from 'nprogress';
 
 Router.onRouteChangeStart = (url) => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 export default ({ children, title }) => (
   <div className="root">
     <Head>
       <title>Next Portfolio</title>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-      />
     </Head>
     <menu>
       <Link href="/">
@@ -24,6 +21,9 @@ export default ({ children, title }) => (
       </Link>{' '}
       <Link href="/hire-me">
         <a>Hire Me</a>
+      </Link>{' '}
+      <Link href="/blog">
+        <a>Blog</a>
       </Link>
     </menu>
     <h1>{title}</h1>
@@ -35,20 +35,22 @@ export default ({ children, title }) => (
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin: 0;
       }
-      header {
+      menu {
         width: 100%;
         display: flex;
         justify-content: space-around;
         padding: 1em;
         font-size: 1.2rem;
         background: indigo;
+        margin: 0;
       }
-      header a {
+      menu a {
         color: darkgrey;
         text-decoration: none;
       }
-      header a:hover {
+      menu a:hover {
         font-weight: bold;
         color: lightgrey;
       }
